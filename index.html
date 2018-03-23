@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Making Fetch Happen</title>
+    <meta name="description" content="Making Fetch Happen LA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <nav>
+        <li data-section="services" class="nav-link">services</li>
+        <li data-section="about" class="nav-link">about</li>
+        <li data-section="contact" class="nav-link">contact</li>
+        <li data-section="faq" class="nav-link">FAQ</li>
+    </nav>
+    <div id="services" class="card card-1">
+        <div class="hover-slider">
+
+            <section class="card-slider-item">
+                <h1 class="title">services</h1>
+            </section>
+            <section class="card-slider-item">services!</section>
+        </div>
+    </div>
+
+    <div id="about" class="card card-2">
+        <div class="hover-slider">
+            <section class="card-slider-item">
+                <h1 class="title">about</h1>
+            </section>
+            <section class="card-slider-item">me!</section>
+        </div>
+    </div>
+
+    <div id="contact" class="card card-3">
+        <div class="hover-slider">
+            <section class="card-slider-item">
+                <h1 class="title">contact</h1>
+            </section>
+            <section class="card-slider-item">my #</section>
+        </div>
+    </div>
+    <div id="faq" class="card card-4">
+        <div class="hover-slider">
+            <section class="card-slider-item">
+                <h1 class="title">FAQ</h1>
+            </section>
+            <section class="card-slider-item">ya i heart dogs</section>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var navLinks = document.querySelectorAll('nav li')
+        function getOffset(el) {
+            el = el.getBoundingClientRect();
+            return {
+                left: el.left + window.scrollX,
+                top: el.top + window.scrollY
+            }
+        }
+
+
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var pos = document.querySelector('div#' + link.getAttribute('data-section'))
+
+                console.log(getOffset(pos))
+                window.scrollTo(0, 0)
+                window.scrollTo(0, getOffset(pos).top - 96);
+
+            })
+        })
+    </script>
+</body>
+
+</html>

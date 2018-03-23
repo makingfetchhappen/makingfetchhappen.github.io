@@ -1,0 +1,92 @@
+/* Coolors Exported Palette - coolors.co/ed6a5a-b38cb4-8d99ae-43aa8b-fcf3fd */
+
+
+/* RGB */
+
+$color1: rgba(237, 106, 90, 1);
+$color2: rgba(179, 140, 180, 1);
+$color3: rgba(141, 153, 174, 1);
+$color4: rgba(67, 150, 139, 1);
+$color5: rgba(252, 243, 253, 1);
+$colors: $color1 $color2 $color3 $color4;
+$slider-height: 20rem;
+body,
+html {
+    line-height: 140%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: $color5;
+}
+
+nav {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: $color3;
+    display: flex;
+    align-items: center;
+    & li {
+        flex: 1;
+        list-style: none;
+        width: 22.5%;
+        color: $color5;
+        font-weight: bolder;
+        letter-spacing: .1rem;
+        text-align: center;
+        display: inline-block;
+    }
+}
+
+.card {
+    display: block;
+    min-height: $slider-height;
+    height: 80vh;
+    box-shadow: 0 1px 2px 1px $color3;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    &:first-of-type {
+        margin-top: 5.5rem !important;
+    }
+}
+
+section>h1.title {
+    font-size: 48pt;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    color: $color5;
+    margin-top: ($slider-height / 2) - 1rem;
+}
+
+@for $i from 1 through length($colors) {
+    .card-#{$i}>.hover-slider {
+        &>.card-slider-item:first-child {
+            background-color: nth($colors, $i);
+        }
+        &>.card-slider-item:last-child {
+            background-color: nth($colors, $i % length($colors) + 1);
+        }
+    }
+}
+
+.hover-slider {
+    width: 200%;
+    height: $slider-height;
+    height: 100vh;
+    overflow: none;
+    &:hover>.card-slider-item {
+        transform: translateX(-100%);
+    }
+    & .card-slider-item {
+        width: 50%;
+        height: inherit;
+        float: left;
+        clear: none;
+        transition: 0.3s ease-in-out;
+        &:first-child {
+            background-color: $color2;
+        }
+    }
+}
